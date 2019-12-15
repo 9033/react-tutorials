@@ -160,6 +160,9 @@ var s="미사일라면방독면⏬"
       let status;
       if (winner){
         status = 'Winner: ' + winner;
+      }
+      else if(this.state.stepNumber==9){//승자가 없는 경우 무승부라는 메시지를 표시해주세요.
+        status = 'Draw';
       } else{
         status = 'Next player: ' + (this.state.xIsNext ? '❌' : '⭕');
       }
