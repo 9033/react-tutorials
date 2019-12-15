@@ -2,19 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Square extends React.Component {
+/*
+3가지 컴포넌트.
+
+react 컴포넌트는
+prop라는 매개변수를 받고
+render함수를 통해 반환.
+*/
+var s="미사일라면방독면⏬"
+class Square extends React.Component {//<button>을 렌더링.
     render() {
       return (
         <button className="square">
-          {/* TODO */}
+          {this.props.value}
         </button>
-      );
+      );//prop을 전달 : 부모 -> 자식 컴포넌트.
     }
   }
   
-  class Board extends React.Component {
+  class Board extends React.Component {//4각형 9개를 렌더링.
     renderSquare(i) {
-      return <Square />;
+      return <Square value={s[i]}/>;//Square에 value prop전달.
     }
   
     render() {
@@ -43,7 +51,7 @@ class Square extends React.Component {
     }
   }
   
-  class Game extends React.Component {
+  class Game extends React.Component {//게임판을 렌더링.
     render() {
       return (
         <div className="game">
