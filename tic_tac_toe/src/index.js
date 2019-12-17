@@ -1,3 +1,5 @@
+import 'react-app-polyfill/ie11'; // for ie 11
+import 'react-app-polyfill/stable'; // for ie 11
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';

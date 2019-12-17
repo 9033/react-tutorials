@@ -5,8 +5,13 @@
 tic tac toe 게임.  
 [자습서 링크](https://ko.reactjs.org/tutorial/tutorial.html)  
 [실습](./tic_tac_toe)  
-### 실행
+### 실행 (development)
 `..\tic_tac_toe> npm start`  
+### 기타
+`..\tic_tac_toe> npm run build`  
+`..\tic_tac_toe> serve -s build`  
+로 production환경에서 실행하면
+IE 11, Edge에서도 동작함.  
 ## 웹사이트에 React 추가
 [문서](https://ko.reactjs.org/docs/add-react-to-a-website.html)  
 [실습](./react_to_html)  
