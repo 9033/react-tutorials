@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Component</title>
+        <meta charSet="utf-8"/>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+        <!-- JSX -->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script  id='myscript' type="text/babel">
+            //함수의 인자처럼 속성을 사용.
+            class HelloWorld extends React.Component{
+                render(){
+                    return <p>Hello {this.props.HumanName} <button>{this.props.children}</button></p>
+                }
+
+            }
+            //컴포넌트 호출. 속성의 값을 지정. 자식도 (그대로 바로 출력되는게 아니라) 속성으로 전달.
+            ReactDOM.render(
+                <div>
+                    <HelloWorld HumanName="말벌"/>
+                    <HelloWorld HumanName="다람쥐"/>
+                    <HelloWorld HumanName="햄스터"/>
+                    <HelloWorld children="하하">
+                        <p>뭉</p>    
+                    </HelloWorld>
+                    <HelloWorld children="하하"/>
+                    <HelloWorld>뭐라고</HelloWorld>
+                </div>,
+                document.querySelector('#container')
+            );
+        </script>
+
+        <!-- show js by codemirror for react (jsx) -->
+        <script src="showjs.js" type="text/babel"></script>
+        <script type="text/babel">
+            var myReactScript = document.body.querySelector('#myscript').innerText;
+            showjs(myReactScript);
+        </script>
+    </body>
+</html>

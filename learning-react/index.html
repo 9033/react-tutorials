@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>learning react 2/e</title>
+        <meta charSet="utf-8"/>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+        <!-- JSX -->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <style>
+            #container{
+                padding:50px;
+                background-color: #eee;
+            }
+            /* #container h1 {
+                font-size: 50px;
+                font-family: sans-serif;
+                color: #0080AB;
+            } */
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <!-- <div id="jsx">
+        </div> -->
+        <div id="js">
+        </div>
+        <div id="html">
+        </div>
+        <script id='myscript' type="text/babel">            
+            class React_ch extends React.Component{
+                render(){
+                    let h1Style = {
+                        fontSize: 50,
+                        fontFamily: "sans-serif",
+                        color: "#0080AB"                        
+                    };
+                    return <h1 style={h1Style}><a href={this.props.chLink}>{this.props.chName}</a></h1>
+                }
+            }
+
+            ReactDOM.render(   
+                <div>             
+                    <React_ch chLink="react-01-JSX.html" chName='JSX'/>
+                    <React_ch chLink="react-02-component.html" chName='컴포넌트'/>
+                    <React_ch chLink="react-03-style.html" chName='스타일링'/>
+                </div>
+                ,document.querySelector("#container")
+            );
+        </script>
+
+        <!-- show js by codemirror for react (jsx) -->
+        <script src="showjs.js" type="text/babel"></script>
+        <script type="text/babel">
+            var myReactScript = document.body.querySelector('#myscript').innerText;
+            showjs(myReactScript);
+        </script>
+
+    </body>
+</html>
