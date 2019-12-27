@@ -24,10 +24,11 @@ script태그를 이용해서 babel.min.js를 index.html에 넣고
 JSX전처리기를 실행하면 JSX가 들어있는 코드가 변경되면 자동으로 순수 js로 변경해서 저장한다.  
 감시기를 명령창에서 실행하고나서 얼핏 보면 멈춘것 처럼 보인다. 이 상태에서 코드가 변경될 때마다 동작한다.  
 `like_button.js`가 `src/like_button.js`에서 변환된 파일이다.  
-## 👉 리액트 웹앱 제작 총론 (learning-react 2/e)
-### [소스 보기](./learning-react/readme.md)  
-
-### [웹에서 보기](skyred.cloud/learning-react)  
+## 👉 리액트 웹앱 제작 총론 (learning-react 2/e)  
+React란 무엇인가? 어떻게 사용하는가 알기위해 보는중.  
+### 연습 중인 코드.  
+[소스 보기](./learning-react/readme.md) : Github  
+[웹에서 보기](http://skyred.cloud/learning-react/) : 결과랑 코드를 같이 볼 수 있음.  
 
 ## 👉 react
 front-end에 객체지향의 장점을 끌어왔다고 볼 수 있다. 가독성, 재사용성이 높다.  
