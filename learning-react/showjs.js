@@ -5,7 +5,15 @@ show js by codemirror for react (jsx)
 
 callback으로 필요한 스크립트가 전부 로드된 다음에 필요한 코드를 실행한다.
 */
-function showjs(myJS){
+
+// var _showjsCM = {}
+// _showjsCM['codemirror.css'] = "https://unpkg.com/codemirror@5.49.2/lib/codemirror.css";
+// _showjsCM['codemirror.js'] = "https://unpkg.com/codemirror@5.49.2/lib/codemirror.js";
+// _showjsCM['javascript.js'] = "https://unpkg.com/codemirror@5.49.2/mode/javascript/javascript.js";
+// _showjsCM['xml.js'] = "https://unpkg.com/codemirror@5.49.2/mode/xml/xml.js";
+// _showjsCM['jsx.js'] = "https://unpkg.com/codemirror@5.49.2/mode/jsx/jsx.js";
+
+function showjs(CodeMirrorOptions){
     function loadScript(src){
         var _myScript = document.createElement('script');
         _myScript.src = src;                
@@ -20,6 +28,27 @@ function showjs(myJS){
     linkStyle.href = "https://unpkg.com/codemirror@5.49.2/lib/codemirror.css";
     myScripts.appendChild(linkStyle);
 
+    // 코드를 스크롤하지 않고 한번에 표시하게 style을 지정.
+    var showjsStyle = document.createElement('style');
+    showjsStyle.innerText = ".CodeMirror { " 
+    +"    line-height: 1em; "
+    +"    font-family: monospace; "
+    +"    height: 100%; "
+    +"    /* Necessary so the scrollbar can be absolutely positioned within the wrapper on Lion. */ "
+    +"    position: relative; "
+    +"    /* This prevents unwanted scrollbars from showing up on the body and wrapper in IE. */ "
+    +"    overflow: hidden; "
+    +"} "
+    +".CodeMirror-scroll { "
+    +"    overflow: auto; "
+    +"    height: 100%; "
+    +"    /* This is needed to prevent an IE[67] bug where the scrolled content "
+    +"        is visible outside of the scrolling box. */ "
+    +"    position: relative; "
+    +"    outline: none; "
+    +"} ";/* https://tridion.stackexchange.com/a/12240 */
+    myScripts.appendChild(showjsStyle);
+    
     var CodeMirrorJS = loadScript("https://unpkg.com/codemirror@5.49.2/lib/codemirror.js");
     myScripts.appendChild(CodeMirrorJS);
     CodeMirrorJS.onload = function(){
@@ -34,22 +63,9 @@ function showjs(myJS){
                 jsxJS.onload = function(){
                     var myCodeDiv = document.createElement('div');
                     document.body.appendChild(myCodeDiv);     
-                    // var myReactScript = document.body.querySelector('#myscript').innerText;
-                    var myCodeMirror = CodeMirror(myCodeDiv, {
-                        value: myJS,
-                        mode:  "jsx",
-                        readOnly : "nocursor",
-                    });                                       
+                    CodeMirror(myCodeDiv, CodeMirrorOptions);
                 };
             };
         };
     };
 };
-// var myCodeDiv = document.createElement('div');
-// document.body.appendChild(myCodeDiv);     
-// var myReactScript = document.body.querySelector('#myscript').innerText;
-// var myCodeMirror = CodeMirror(myCodeDiv, {
-//     value: myReactScript,
-//     mode:  "jsx",
-//     readOnly : "nocursor",
-// });           

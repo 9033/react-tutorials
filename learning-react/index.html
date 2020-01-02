@@ -70,7 +70,12 @@
         <script src="showjs.js" type="text/babel"></script>
         <script type="text/babel">
             var myReactScript = document.body.querySelector('#myscript').innerText;
-            showjs(myReactScript);
+            showjs({
+                value: myReactScript,
+                mode:  "jsx",
+                readOnly : "nocursor",
+                viewportMargin: Infinity,
+            });
         </script>
 
     </body>
