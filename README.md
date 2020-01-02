@@ -27,10 +27,10 @@ JSX전처리기를 실행하면 JSX가 들어있는 코드가 변경되면 자�
 ## 👉 리액트 웹앱 제작 총론 (learning-react 2/e)  
 React란 무엇인가? 어떻게 사용하는가 알기위해 보는중.  
 ### 연습 중인 코드.  
-[소스 보기](./learning-react/readme.md) : Github  
+[소스 보기](./learning-react) : Github  
 [웹에서 보기](http://skyred.cloud/learning-react/) : 결과랑 코드를 같이 볼 수 있음.  
 
 ## 👉 react
-front-end에 객체지향의 장점을 끌어왔다고 볼 수 있다. 가독성, 재사용성이 높다.  
-그냥 javascript로 짜면 html과 스크립트가 한 파일안에 여기 저기 있는 상황이 되기 쉽다.  
-react는 html도 렌더링 함으로써 한 class안에 html과 관련 동작을하는 코드를 작성하게 한다.  
+html+javascipt로 구현하는 front-end에 객체지향의 장점을 끌어왔다고 볼 수 있다. 가독성, 재사용성이 높다.  
+그냥 javascript로 짜면 html, css, 스크립트가 한 파일안에 여기 저기 있는 상황이 되기 쉽다.  
+한 class안에 html+css과 관련 동작을 하는 javascript 코드를 작성한다.  
