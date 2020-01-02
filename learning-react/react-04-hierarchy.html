@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>style</title>
+        <meta charSet="utf-8"/>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+        <!-- JSX -->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <style>
+            #container{
+                padding:50px;
+                background-color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script id='myscript' type="text/babel">
+            // 컬러 팔레트 카드에서 식별한 컴포넌트 3개
+            class Square extends React.Component{
+                render(){
+                    var squareStyle={
+                        height:150,
+                        // backgroundColor:"#FF6663"
+                        backgroundColor: this.props.color
+                    };
+                    return(
+                        <div style={squareStyle}>
+                        </div>
+                    );
+                }
+            }
+            class Label extends React.Component{
+                render(){
+                    var labelStyle={
+                        fontFamily:"sans-serif",
+                        fontWeight:"bold",
+                        padding:13,
+                        margin:0
+                    };
+
+                    return(
+                        <p style={labelStyle}>{this.props.color}</p>
+                    );
+                }
+            }
+
+            /*
+            Square, Label이 상주할 컨테이너
+            
+            속성을 받아서 Square, Label로 전달.
+            */
+            class Card extends React.Component{ 
+                render(){
+                    var cardStyle={
+                        height:200,
+                        width:150,
+                        padding:0,
+                        backgroundColor:"#fff",
+                        boxShadow: "0px 0px 5px #666"
+                    };
+
+                    return(
+                        <div style={cardStyle}>
+                            <Square color={this.props.color}/>
+                            <Label color={this.props.color}/>
+                        </div>
+                    );
+                }
+            }
+
+            ReactDOM.render(
+                <div>
+                    <Card color="#0F6663"/>
+                </div>,
+                document.body.querySelector('#container')
+            )
+        </script>
+        
+        <!-- show js by codemirror for react (jsx) -->
+        <script src="showjs.js" type="text/babel"></script>
+        <script type="text/babel">
+            var myReactScript = document.body.querySelector('#myscript').innerText;
+            showjs({
+                value: myReactScript,
+                mode:  "jsx",
+                readOnly : "nocursor",
+                viewportMargin: Infinity,
+            });
+        </script>
+    </body>
+</html>
