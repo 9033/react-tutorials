@@ -13,55 +13,52 @@
                 padding:50px;
                 background-color: #eee;
             }
-            h1 {
-                font-size: 50px;
-                font-family: sans-serif;
-                color: #000;
-            }
-            h2 {
-                font-size: 30px;
-                font-family: sans-serif;
-                color: #0080AB;
-            }
-            /* #container h1 {
-                font-size: 50px;
-                font-family: sans-serif;
-                color: #0080AB;
-            } */
         </style>
     </head>
     <body>
-        <div>
-            <h1>learning react 2/e</h1>
-            <h2><a href="https://github.com/9033/react-tutorials#-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%9B%B9%EC%95%B1-%EC%A0%9C%EC%9E%91-%EC%B4%9D%EB%A1%A0-learning-react-2e">Source</a></h2>
-        </div>
-
         <div id="container"></div>
-        <!-- <div id="jsx">
-        </div> -->
-        <div id="js">
-        </div>
-        <div id="html">
-        </div>
-        <script id='myscript' type="text/babel">            
-            class React_ch extends React.Component{
+        <script id='myscript' type="text/babel">
+            class Title extends React.Component{
                 render(){
-                    let h1Style = {
+                    let titleStyle = {};
+                    titleStyle[1] = {
                         fontSize: 50,
                         fontFamily: "sans-serif",
+                        margin: 0,
+                        color: "#000"                        
+                    };
+                    titleStyle[2] = {
+                        fontSize: 30,
+                        fontFamily: "sans-serif",
+                        margin: 0,
                         color: "#0080AB"                        
                     };
-                    return <h1 style={h1Style}><a href={this.props.chLink}>{this.props.chName}</a></h1>
+                    titleStyle[3] = {
+                        fontSize: 20,
+                        fontFamily: "sans-serif",
+                        margin: 0,
+                        color: "#0080AB"                        
+                    };
+                    return <p style={titleStyle[Number(this.props.lv)]}><a href={this.props.chLink}>{this.props.chName}</a></p>
                 }
-            }
+            }            
 
-            ReactDOM.render(   
-                <div>             
-                    <React_ch chName='목록'/>
-                    <React_ch chLink="react-01-JSX.html" chName='JSX'/>
-                    <React_ch chLink="react-02-component.html" chName='컴포넌트'/>
-                    <React_ch chLink="react-03-style.html" chName='스타일링'/>
-                    <React_ch chLink="react-04-hierarchy.html" chName='복잡한 컴포넌트'/>
+            var divStyle={
+                padding:10,
+                lineHeight:'50px'       
+            };
+            ReactDOM.render(
+                <div>   
+                    <div style={divStyle}>
+                        <Title lv='1' chName='learning react 2/e'/>
+                        <Title lv='3' chLink="https://github.com/9033/react-tutorials#-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%9B%B9%EC%95%B1-%EC%A0%9C%EC%9E%91-%EC%B4%9D%EB%A1%A0-learning-react-2e" chName='Source'/>
+                    </div>
+                    <div style={divStyle}>
+                        <Title lv='2' chLink="react-01-JSX.html" chName='JSX'/>
+                        <Title lv='2' chLink="react-02-component.html" chName='컴포넌트'/>
+                        <Title lv='2' chLink="react-03-style.html" chName='스타일링'/>
+                        <Title lv='2' chLink="react-04-hierarchy.html" chName='복잡한 컴포넌트'/>
+                    </div>
                 </div>
                 ,document.querySelector("#container")
             );
