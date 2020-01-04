@@ -1,6 +1,16 @@
 # react tutorials
-## 👉 아나콘다 환경에서 nodejs설치
+## 👉 아나콘다 환경에서 nodejs 설치가 필요할때  
 `conda install nodejs`  
+### visual studio code에서 아나콘다 환경의 터미널 실행.
+'anaconda3 prompt' 단축 아이콘을 참고해서  
+.vscode/setting.json 파일을 설정해주면 된다.  
+다음을 참고해서 상황에 맞게 경로를 설정한다.  
+```
+{
+    "terminal.integrated.shell.windows": "c:\\windows\\System32\\cmd.exe",
+    "terminal.integrated.shellArgs.windows": ["/K","C:\\Users\\q\\Anaconda3\\Scripts\\activate.bat C:\\Users\\q\\Anaconda3"]
+}
+``` 
 ## 👉 tic_tac_toe
 tic tac toe 게임.  
 [자습서 링크](https://ko.reactjs.org/tutorial/tutorial.html)  
