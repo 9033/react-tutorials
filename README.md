@@ -27,7 +27,7 @@ tic tac toe 게임.
 ### JSX를 실행할때 crossorigin에러
 script태그를 이용해서 babel.min.js를 index.html에 넣고  
 바로 브라우저에 index.html파일을 읽으면 발생한다.  
-웹서버를 실행하면 된다. 파이선의 경우는 다음과 같다.  
+정적 웹서버를 실행하면 된다. 파이선의 경우는 다음과 같다.  
 `..\react_to_html>python -m http.server 8000`  
 가장 뒤에 숫자는 포트 번호.  
 ### 자동화 된 JSX 감시기

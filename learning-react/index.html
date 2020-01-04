@@ -48,7 +48,7 @@
                 lineHeight:'50px'       
             };
             ReactDOM.render(
-                <div>   
+                <React.Fragment>   
                     <div style={divStyle}>
                         <Title lv='1' chName='learning react 2/e'/>
                         <Title lv='3' chLink="https://github.com/9033/react-tutorials#-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%9B%B9%EC%95%B1-%EC%A0%9C%EC%9E%91-%EC%B4%9D%EB%A1%A0-learning-react-2e" chName='Source'/>
@@ -58,8 +58,10 @@
                         <Title lv='2' chLink="react-02-component.html" chName='컴포넌트'/>
                         <Title lv='2' chLink="react-03-style.html" chName='스타일링'/>
                         <Title lv='2' chLink="react-04-hierarchy.html" chName='복잡한 컴포넌트'/>
+                        <Title lv='2' chLink="react-05-props.html" chName='속성 전달'/>
+                        <Title lv='2' chLink="react-06-state.html" chName='상태'/>
                     </div>
-                </div>
+                </React.Fragment>
                 ,document.querySelector("#container")
             );
         </script>

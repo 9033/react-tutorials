@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>hierarchy</title>
+        <title>props</title>
         <meta charSet="utf-8"/>
         <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
@@ -11,61 +11,54 @@
         <style>
             #container{
                 padding:50px;
-                background-color: #fff;
+                background-color: #eee;
             }
         </style>
     </head>
     <body>
         <div id="container"></div>
-        <script id='myscript' type="text/babel">
-            // 컬러 팔레트 카드에서 식별한 컴포넌트 3개
-            class Square extends React.Component{
+        <script  id='myscript' type="text/babel">
+            /*
+            속성 전달 : Shirt -> Label -> Display
+            color, num, size가 전달됨.
+
+            스프레드 연산자를 사용해서 여러개의 속성을 일일이 쓰지 않아도 전달.
+            */
+            class Display extends React.Component{
                 render(){
-                    var squareStyle={
-                        height:150,
-                        // backgroundColor:"#FF6663"
-                        backgroundColor: this.props.color
-                    };
                     return(
-                        <div style={squareStyle}>
+                        <div>
+                            <p>{this.props.color}</p>
+                            <p>{this.props.num}</p>
+                            <p>{this.props.size}</p>
                         </div>
                     );
                 }
             }
+
             class Label extends React.Component{
                 render(){
-                    var labelStyle={
-                        fontFamily:"sans-serif",
-                        fontWeight:"bold",
-                        padding:13,
-                        margin:0
-                    };
-
                     return(
-                        <p style={labelStyle}>{this.props.color}</p>
+                        <Display
+                            // color ={this.props.color}
+                            // num={this.props.num}
+                            // size={this.props.size}
+                            {...this.props}
+                        />
                     );
                 }
             }
 
-            /*
-            Square, Label이 상주할 컨테이너
-            
-            속성을 받아서 Square, Label로 전달.
-            */
-            class Card extends React.Component{ 
+            class Shirt extends React.Component{
                 render(){
-                    var cardStyle={
-                        height:200,
-                        width:150,
-                        padding:0,
-                        backgroundColor:"#fff",
-                        boxShadow: "0px 0px 5px #666"
-                    };
-
                     return(
-                        <div style={cardStyle}>
-                            <Square color={this.props.color}/>
-                            <Label color={this.props.color}/>
+                        <div>
+                            <Label
+                                // color ={this.props.color}
+                                // num={this.props.num}
+                                // size={this.props.size}
+                                {...this.props}
+                            />
                         </div>
                     );
                 }
@@ -73,12 +66,12 @@
 
             ReactDOM.render(
                 <div>
-                    <Card color="#0F6663"/>
+                    <Shirt color="steelblue" num="3.141592" size="medium" />
                 </div>,
                 document.body.querySelector('#container')
             )
         </script>
-        
+
         <!-- show js by codemirror for react (jsx) -->
         <script src="showjs.js" type="text/babel"></script>
         <script type="text/babel">

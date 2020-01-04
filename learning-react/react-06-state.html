@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>state</title>
+        <meta charSet="utf-8"/>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+        <!-- JSX -->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script  id='myscript' type="text/babel">
+            /*
+            strikes : 컴포넌트의 상태의 일부, 생성자에서 초기 상태를 설정하게 함.
+
+            setState : state의 객체의 내용이 번경될 때마다 render를 호출해서 UI를 새로 그리게 함.
+            */
+            class LightningCounter extends React.Component{
+                constructor(props){
+                    super(props);
+
+                    this.state={
+                        strikes:0
+                    };
+
+                    this.timerTick = this.timerTick.bind(this); //함수를 명시적으로 바인딩.
+                }
+
+                timerTick(){
+                    this.setState({
+                        strikes: this.state.strikes + 100
+                    });
+                }
+
+                componentDidMount(){ //컴포넌트가 렌더링 된 후에 한번 실행된다.
+                    setInterval(this.timerTick,1000);
+                }
+
+                render(){
+                    return (
+                        <h1>{this.state.strikes}</h1>
+                    );
+                }
+            }
+
+            class LightningCounterDisplay extends React.Component{
+                render(){
+                    var divStyle = {
+                        width:250,
+                        textAlign:"center",
+                        backgroundColor:"black",
+                        padding:40,
+                        fontFamily:"sans-serif",
+                        color:"#999",
+                        borderRadius:10
+                    };
+                    return(
+                        <div style={divStyle}>
+                            <LightningCounter/>
+                        </div>
+                    );
+                }
+            }
+
+            ReactDOM.render(
+                <div>
+                    <LightningCounterDisplay/>
+                </div>,
+                document.body.querySelector('#container')
+            )
+        </script>
+
+        <!-- show js by codemirror for react (jsx) -->
+        <script src="showjs.js" type="text/babel"></script>
+        <script type="text/babel">
+            var myReactScript = document.body.querySelector('#myscript').innerText;
+            showjs({
+                value: myReactScript,
+                mode:  "jsx",
+                readOnly : "nocursor",
+                viewportMargin: Infinity,
+            });
+        </script>
+    </body>
+</html>
