@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>event</title>
+        <meta charSet="utf-8"/>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+        <!-- JSX -->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <style>
+            #container{
+                padding:50px;
+                background-color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script  id='myscript' type="text/babel">
+            class Counter extends React.Component{
+                render(){
+                    var textStyle = {                        
+                        fontSize:72,
+                        fontFamily:"sans-serif",
+                        color:"#333",
+                        fontWeight:"bold"
+                    };
+                    return(
+                        <div style={textStyle}>
+                            {this.props.display}
+                        </div>
+                    );
+                }
+            }
+
+            class CounterParent extends React.Component{
+                constructor(props){
+                    super(props);
+
+                    this.state={
+                        count:0
+                    };
+
+                    this.increse = this.increse.bind(this);
+                }
+
+                // 카운터의 값을 증가시킴. shift키가 눌려 있으면 10씩 증가시킴.
+                increse(e){
+                    var currentCount = this.state.count;
+
+                    if (e.shiftKey){
+                        currentCount += 10;
+                    }
+                    else{
+                        currentCount += 1;
+                    }
+                    this.setState({
+                        count: currentCount
+                    });
+                }
+
+                render(){
+                    var backgroundStyle = {
+                        width:250,
+                        height:100,
+                        textAlign:"center",
+                        backgroundColor:"#ffc53a",
+                        padding:50,
+                        borderRadius:10
+                    };
+                    var buttonStyle = {
+                        fontSize:"1em",
+                        width:30,
+                        height:30,
+                        fontFamily:"sans-serif",
+                        color:"#333",
+                        fontWeight:"bold",
+                        lineWeight:"line"
+                    };
+                    return (
+                        <div style={backgroundStyle}>
+                            <Counter display={this.state.count}/>
+                            <button onClick={this.increse} style={buttonStyle}>+</button>
+                        </div>
+                    );
+                }
+            }
+            
+            ReactDOM.render(
+                <div>
+                    <CounterParent/>
+                </div>,
+                document.body.querySelector('#container')
+            )
+        </script>
+
+        <!-- show js by codemirror for react (jsx) -->
+        <script src="showjs.js" type="text/babel"></script>
+        <script type="text/babel">
+            var myReactScript = document.body.querySelector('#myscript').innerText;
+            showjs({
+                value: myReactScript,
+                mode:  "jsx",
+                readOnly : "nocursor",
+                viewportMargin: Infinity,
+            });
+        </script>
+    </body>
+</html>

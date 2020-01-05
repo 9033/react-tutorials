@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>data to UI</title>
+        <meta charSet="utf-8"/>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+        <!-- JSX -->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script  id='myscript' type="text/babel">
+            /*
+            컴포넌트를 리턴하는 함수, 컴포넌트가 담긴 배열을 렌더링.
+            JSX -> javascript가 되기 때문에 가능함.
+            */
+            class Circle extends React.Component{
+                render(){
+                    var circleStyle={
+                        padding:10,
+                        margin:20,
+                        display:"inline-block",
+                        backgroundColor:this.props.bgColor,
+                        borderRadius: "50%",
+                        width:100,
+                        height:100
+                    };
+                    return (
+                        <div style={circleStyle}>
+                        </div>
+                    );
+                }
+            }
+
+            // 컴포넌트를 리턴하는 함수.
+            function showCircle(){
+                var colors=['#393E41','#E94F37','#1C89BF','#a1d363'];
+                var ran = Math.floor(Math.random() * colors.length);
+
+                return <Circle bgColor={colors[ran]}/>;
+            }            
+
+            // 컴포넌트가 담긴 배열.
+            var renderData = [];
+            var colors =['#85ffc7','#297373','#ff8552','#a40e4c'];
+
+            for(var i=0;i<colors.length;i++){
+                var color=colors[i];
+                /*
+                key 속성을 추가해서 react가 각 컴포넌트를 식별하게 한다.
+                */
+                renderData.push( <Circle key={i+color} bgColor={color}/> );
+            }
+
+            ReactDOM.render(
+                <div>
+                    {showCircle()}
+                    {showCircle()}
+                    {renderData}
+                </div>,
+                document.body.querySelector('#container')
+            )
+        </script>
+
+        <!-- show js by codemirror for react (jsx) -->
+        <script src="showjs.js" type="text/babel"></script>
+        <script type="text/babel">
+            var myReactScript = document.body.querySelector('#myscript').innerText;
+            showjs({
+                value: myReactScript,
+                mode:  "jsx",
+                readOnly : "nocursor",
+                viewportMargin: Infinity,
+            });
+        </script>
+    </body>
+</html>

@@ -20,28 +20,48 @@
         <script id='myscript' type="text/babel">
             class Title extends React.Component{
                 render(){
+                    let defStyle ={
+                        fontFamily: "sans-serif",
+                        margin: 0
+                    };
                     let titleStyle = {};
                     titleStyle[1] = {
-                        fontSize: 50,
-                        fontFamily: "sans-serif",
-                        margin: 0,
-                        color: "#000"                        
+                        fontSize: 50,                        
+                        color: "#000",
+                        ...defStyle
                     };
                     titleStyle[2] = {
                         fontSize: 30,
-                        fontFamily: "sans-serif",
-                        margin: 0,
-                        color: "#0080AB"                        
+                        color: "#0080AB",
+                        ...defStyle
                     };
                     titleStyle[3] = {
                         fontSize: 20,
-                        fontFamily: "sans-serif",
-                        margin: 0,
-                        color: "#0080AB"                        
+                        color: "#0080AB",
+                        ...defStyle
                     };
                     return <p style={titleStyle[Number(this.props.lv)]}><a href={this.props.chLink}>{this.props.chName}</a></p>
                 }
             }            
+
+            var chapters = [];
+
+            chapters.push( [2,"react-01-JSX.html",'JSX']);
+            chapters.push( [2,"react-02-component.html",'컴포넌트']);
+            chapters.push( [2,"react-03-style.html",'스타일링']);
+            chapters.push( [2,"react-04-hierarchy.html",'복잡한 컴포넌트']);
+            chapters.push( [2,"react-05-props.html",'속성 전달']);
+            chapters.push( [2,"react-06-state.html",'상태']);
+            chapters.push( [2,"react-07-data2UI.html",'데이터 to UI']);
+            chapters.push( [2,"react-08-event.html",'이벤트']);
+
+            function drawChapters(){
+                var ret = [];
+                for(var i=0;i<chapters.length;i++){
+                    ret.push( <Title key={i} lv={String(chapters[i][0])} chLink={chapters[i][1]} chName={chapters[i][2]}/>);
+                }
+                return ret;
+            }
 
             var divStyle={
                 padding:10,
@@ -54,12 +74,7 @@
                         <Title lv='3' chLink="https://github.com/9033/react-tutorials#-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%9B%B9%EC%95%B1-%EC%A0%9C%EC%9E%91-%EC%B4%9D%EB%A1%A0-learning-react-2e" chName='Source'/>
                     </div>
                     <div style={divStyle}>
-                        <Title lv='2' chLink="react-01-JSX.html" chName='JSX'/>
-                        <Title lv='2' chLink="react-02-component.html" chName='컴포넌트'/>
-                        <Title lv='2' chLink="react-03-style.html" chName='스타일링'/>
-                        <Title lv='2' chLink="react-04-hierarchy.html" chName='복잡한 컴포넌트'/>
-                        <Title lv='2' chLink="react-05-props.html" chName='속성 전달'/>
-                        <Title lv='2' chLink="react-06-state.html" chName='상태'/>
+                        {drawChapters()}
                     </div>
                 </React.Fragment>
                 ,document.querySelector("#container")
