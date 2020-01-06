@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM element</title>
+        <meta charSet="utf-8"/>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+        <!-- JSX -->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <style>
+            #container{
+                padding:50px;
+                background-color: #fff;
+            }
+
+            .colorSquare{
+                box-shadow: 0px 0px 25px 0px #333;
+                width: 242px;
+                height: 242px;
+                margin-bottom: 15px;                
+            }
+
+            .colorArea input {
+                padding: 10px;
+                font-size: 16px;
+                border: 2px solid #ccc;
+            }
+
+            .colorArea button{
+                padding: 10px;
+                font-size: 16px;
+                margin: 10px;
+                background-color: #666;
+                color: #fff;
+                border: 2px solid #666;                
+            }
+
+            .colorArea button:hover{
+                background-color: #111;
+                border-color: #111;
+                cursor: pointer;
+            }
+
+            #colorHeading{
+                padding: 0;
+                margin: 50px;
+                margin-bottom: -20px;
+                font-family: sans-serif;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1 id="colorHeading">Colorizer</h1>
+        <div id="container"></div>
+        <script  id='myscript' type="text/babel">
+            class Colorizer extends React.Component {
+                constructor(props){
+                    super(props);
+
+                    this.state={
+                        color:"",
+                        bgColor:"white"
+                    };
+
+                    this.colorValue=this.colorValue.bind(this);
+                    this.setNewColor=this.setNewColor.bind(this);
+                }
+
+                colorValue(e){
+                    this.setState({
+                        color: e.target.value
+                    });
+                }
+
+                setNewColor(e){
+                    this.setState({
+                        bgColor: this.state.color
+                    });
+
+                    //input element에 접근.
+                    this._input.focus();
+                    this._input.value="";
+
+                    e.preventDefault();
+                }
+
+                render(){
+                    var squareStyle={
+                        backgroundColor:this.state.bgColor
+                    };
+
+                    var self = this;
+
+                    return (
+                        <div className="colorArea">
+                            <div style={squareStyle} className="colorSquare"/>
+
+                            <form onSubmit={this.setNewColor}>
+                                <input onChange={this.colorValue}
+                                       ref={
+                                           //element를 함수의 입력으로 줌. 여기서는 <input>
+                                           function(el){
+                                               self._input = el;
+                                           }
+                                       }
+                                       placeholder="Enter a color value"/>
+                                <button type="submit">go</button>
+                            </form>
+                            <ColorLabel color={this.state.bgColor}/>
+                        </div>
+                    );
+                }
+            }
+
+            var heading = document.querySelector("#colorHeading");
+            class ColorLabel extends React.Component {
+                render(){
+                    // createPortal : 계층 밖에 있는 엘리먼트에 접근.
+                    return ReactDOM.createPortal(
+                        ": " + this.props.color,
+                        heading
+                    );
+                }
+            }
+
+            ReactDOM.render(
+                <div>
+                    <Colorizer/>
+                </div>,
+                document.body.querySelector('#container')
+            )
+        </script>
+
+
+        <!-- show js by codemirror for react (jsx) -->
+        <script src="showjs.js" type="text/babel"></script>
+        <script type="text/babel">
+            var myReactScript = document.body.querySelector('#myscript').innerText;
+            showjs({
+                value: myReactScript,
+                mode:  "jsx",
+                readOnly : "nocursor",
+                viewportMargin: Infinity,
+            });
+        </script>
+    </body>
+</html>

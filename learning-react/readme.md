@@ -13,6 +13,10 @@ JSX는 궁극적으로 자바스크립트로 번역됨.
 ### [상태](react-06-state.html)  
 UI와의 동기화를 react가 한다.  
 ### [데이터](react-07-data2UI.html)  
-함수와 배열을 렌더링.  
+함수와 배열을 이용해서 컴포넌트를 렌더링.  
 ### [이벤트](react-08-event.html)  
-
+### [컴포넌트 생명주기](react-09-lifecycle.html)  
+### [DOM 엘리먼트 접근](react-10-domElement.html)  
+### [create-react-app](helloworld)  
+create-react-app 사용하기.  
+빌드 하기.  

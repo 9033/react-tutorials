@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>lifecycle</title>
+        <meta charSet="utf-8"/>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+        <!-- JSX -->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <style>
+            #container{
+                padding:50px;
+                background-color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script  id='myscript' type="text/babel">
+            /*
+            11장 : 컴포넌트 생명주기
+            */
+            class Links extends React.Component {
+                constructor(props){// 생성
+                    console.log("constructor");
+                    super(props);
+
+                    this.state={};
+                }
+                // componentWillMount(){//자리 잡기 전
+                //     console.log("componentWillMount");
+                // }                
+                componentDidMount(){//자리 잡은 후
+                    console.log("componentDidMount");
+                }
+
+                shouldComponentUpdate(newProps, newState) {// 상태가 변경되었을때 업데이트 여부를 리턴
+                    console.log("shouldComponentUpdate");
+                    return true;
+                }
+
+                // componentWillUpdate(nextProps, nextState){//업데이트 되기 직전에 호출
+                //     console.log("componentWillUpdate");
+                // }
+                getSnapshotBeforeUpdate(prevProps, prevState){
+                    console.log("getSnapshotBeforeUpdate");
+                    return null;
+                }
+
+                componentDidUpdate(prevProps, prevState, snapshot) {//업데이트 되고 render직후에 호출
+                    console.log("componentDidUpdate");
+                }
+
+                static getDerivedStateFromProps(props, state){
+                    console.log("getDerivedStateFromProps");
+                    return null;
+                }
+                // componentWillReceiveProps(nextProps){//속성 변경시 호출
+                //     console.log("componentWillReceiveProps");
+                // }
+                
+                render(){//렌더링
+                    console.log("render");
+                    return (<a href={this.props.link}>{this.props.link}</a>);
+                }
+
+                componentWillUnmount(){}
+            }
+            var lifecycle_example = "https://www.kirupa.com/react/lifecycle_example.htm";
+            var lifecycle_example_source = "https://github.com/kirupa/kirupa/blob/master/reactjs/lifecycle.htm";
+            var fff = <Links link = {lifecycle_example_source}/>;
+            ReactDOM.render(
+                <div>
+                    <Links link = {lifecycle_example}/>
+                    <br/>
+                    <Links link = {lifecycle_example_source}/>
+                    <br/>
+                    {fff}
+                </div>,
+                document.body.querySelector('#container')
+            )
+        </script>
+
+
+        <!-- show js by codemirror for react (jsx) -->
+        <script src="showjs.js" type="text/babel"></script>
+        <script type="text/babel">
+            var myReactScript = document.body.querySelector('#myscript').innerText;
+            showjs({
+                value: myReactScript,
+                mode:  "jsx",
+                readOnly : "nocursor",
+                viewportMargin: Infinity,
+            });
+        </script>
+    </body>
+</html>
