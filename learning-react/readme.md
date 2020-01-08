@@ -17,6 +17,11 @@ UI와의 동기화를 react가 한다.
 ### [이벤트](react-08-event.html)  
 ### [컴포넌트 생명주기](react-09-lifecycle.html)  
 ### [DOM 엘리먼트 접근](react-10-domElement.html)  
+ref를 이용해서 해당 DOM을 컴포넌트에 변수로 바인드.    
 ### [create-react-app](helloworld)  
 create-react-app 사용하기.  
 빌드 하기.  
+hello world만 출력하기에는 심심해서 새로고침 할때마다 다른 내용이 출력되게 함.  
+### [ip address](ipaddress)  
+무언가를 보여주는 컴포넌트와 무언가를 처리하는 컴포넌트로 구분한다.  
+여기서는 ip address가 뭔지 처리하는 컨테이너와 ip address를 보여주는 컴포넌트를 사용한다.  

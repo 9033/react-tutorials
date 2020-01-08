@@ -23,7 +23,7 @@
                     let defStyle ={
                         fontFamily: "sans-serif",
                         margin: 0
-                    };
+                    };                    
                     let titleStyle = {};
                     titleStyle[1] = {
                         fontSize: 50,                        
@@ -40,7 +40,12 @@
                         color: "#0080AB",
                         ...defStyle
                     };
-                    return <p style={titleStyle[Number(this.props.lv)]}><a href={this.props.chLink}>{this.props.chName}</a></p>
+                    let commentStyle={
+                        fontSize: 17,
+                        color: "#0080AB",
+                        ...defStyle
+                    };
+                    return <p style={titleStyle[Number(this.props.lv)]}><a href={this.props.chLink}>{this.props.chName}</a> <a style={commentStyle}>{this.props.chComment}</a></p>
                 }
             }            
 
@@ -49,19 +54,25 @@
             chapters.push( [2,"react-01-JSX.html",'JSX']);
             chapters.push( [2,"react-02-component.html",'컴포넌트']);
             chapters.push( [2,"react-03-style.html",'스타일링']);
-            chapters.push( [2,"react-04-hierarchy.html",'복잡한 컴포넌트']);
-            chapters.push( [2,"react-05-props.html",'속성 전달']);
-            chapters.push( [2,"react-06-state.html",'상태']);
-            chapters.push( [2,"react-07-data2UI.html",'데이터 to UI']);
-            chapters.push( [2,"react-08-event.html",'이벤트']);
+            chapters.push( [2,"react-04-hierarchy.html",'복잡한 컴포넌트','컬러 팔레트 카드']);
+            chapters.push( [2,"react-05-props.html",'속성 전달','계층을 이루는 컴포넌트 사이에 속성 전달.']);
+            chapters.push( [2,"react-06-state.html",'상태','UI와의 동기화']);
+            chapters.push( [2,"react-07-data2UI.html",'데이터 to UI','함수와 배열을 이용']);
+            chapters.push( [2,"react-08-event.html",'이벤트','interactive']);
             chapters.push( [2,"react-09-lifecycle.html",'컴포넌트 생명주기']);
-            chapters.push( [2,"react-10-domElement.html",'DOM 엘리먼트 접근']);
-            chapters.push( [2,"helloworld/build",'create-react-app']);
+            chapters.push( [2,"react-10-domElement.html",'DOM 엘리먼트 접근','ref']);
+            chapters.push( [2,"helloworld/build",'create-react-app','hello world만 출력하기에는 심심해서 새로고침 할때마다 다른 내용이 출력되게 함']);
+            chapters.push( [2,"ipaddress/build",'ip address','ip 주소를 받아와서 보여준다']);
 
             function drawChapters(){
                 var ret = [];
                 for(var i=0;i<chapters.length;i++){
-                    ret.push( <Title key={i} lv={String(chapters[i][0])} chLink={chapters[i][1]} chName={chapters[i][2]}/>);
+                    if(chapters[i][3]!=undefined){
+                        ret.push( <Title key={i} lv={String(chapters[i][0])} chLink={chapters[i][1]} chName={chapters[i][2]} chComment={chapters[i][3]}/>);
+                    }
+                    else{
+                        ret.push( <Title key={i} lv={String(chapters[i][0])} chLink={chapters[i][1]} chName={chapters[i][2]}/>);
+                    }
                 }
                 return ret;
             }
