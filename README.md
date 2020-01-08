@@ -1,4 +1,5 @@
 # react tutorials
+## 목표 : react android app 제작.
 ## 👉 tic_tac_toe
 tic tac toe 게임.  
 [자습서 링크](https://ko.reactjs.org/tutorial/tutorial.html)  
