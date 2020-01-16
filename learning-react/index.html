@@ -34,7 +34,7 @@
                 render(){
                     let defStyle ={
                         fontFamily: "sans-serif",
-                        margin: 0
+                        margin: 5
                     };                    
                     let titleStyle = {};
                     titleStyle[1] = {
@@ -44,20 +44,32 @@
                     };
                     titleStyle[2] = {
                         fontSize: 30,
-                        color: "#0080AB",
+                        color: "#00505B",
                         ...defStyle
                     };
                     titleStyle[3] = {
                         fontSize: 20,
-                        color: "#0080AB",
+                        color: "#00505B",
                         ...defStyle
                     };
                     let commentStyle={
                         fontSize: 17,
-                        color: "#0080AB",
+                        color: "#0080fB",
                         ...defStyle
                     };
-                    return <ul className={"btn btn-outline-info"}><p style={titleStyle[Number(this.props.lv)]}><a href={this.props.chLink}>{this.props.chName}</a> <a style={commentStyle}>{this.props.chComment}</a></p></ul>
+                    // return <ul className={"btn btn-outline-info"}><p style={titleStyle[Number(this.props.lv)]}><a href={this.props.chLink}>{this.props.chName}</a> <a style={commentStyle}>{this.props.chComment}</a></p></ul>
+                    // console.log(this.props.chComment,this.props.chComment==undefined);
+                    if (this.props.chComment!=undefined){
+                        return (<a className={"btn btn-outline-info"} style={titleStyle[Number(this.props.lv)]} href={this.props.chLink}>
+                            <a >{this.props.chName}</a> 
+                            <p style={commentStyle}>{this.props.chComment}</p>
+                            </a>);
+                    }
+                    else{
+                        return (<a className={"btn btn-outline-info"} style={titleStyle[Number(this.props.lv)]} href={this.props.chLink}>
+                                <a>{this.props.chName}</a> 
+                                </a>);
+                    }
                 }
             }            
 
