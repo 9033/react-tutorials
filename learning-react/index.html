@@ -3,11 +3,23 @@
     <head>
         <title>learning react 2/e</title>
         <meta charSet="utf-8"/>
-        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script> -->
+        <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
 
         <!-- JSX -->
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <!-- bootstrap 4 -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
         <style>
             #container{
                 padding:50px;
@@ -45,7 +57,7 @@
                         color: "#0080AB",
                         ...defStyle
                     };
-                    return <p style={titleStyle[Number(this.props.lv)]}><a href={this.props.chLink}>{this.props.chName}</a> <a style={commentStyle}>{this.props.chComment}</a></p>
+                    return <ul className={"btn btn-outline-info"}><p style={titleStyle[Number(this.props.lv)]}><a href={this.props.chLink}>{this.props.chName}</a> <a style={commentStyle}>{this.props.chComment}</a></p></ul>
                 }
             }            
 
@@ -63,6 +75,7 @@
             chapters.push( [2,"react-10-domElement.html",'DOM 엘리먼트 접근','ref']);
             chapters.push( [2,"helloworld/build",'create-react-app','hello world만 출력하기에는 심심해서 새로고침 할때마다 다른 내용이 출력되게 함']);
             chapters.push( [2,"ipaddress/build",'ip address','ip 주소를 받아와서 보여준다']);
+            chapters.push( [2,"todolist/build",'todolist','할일 목록 (추가, 삭제)']);
 
             function drawChapters(){
                 var ret = [];
@@ -84,7 +97,9 @@
             ReactDOM.render(
                 <React.Fragment>   
                     <div style={divStyle}>
+                        <div className={"jumbotron text-center"} >
                         <Title lv='1' chName='learning react 2/e'/>
+                        </div>
                         <Title lv='3' chLink="https://github.com/9033/react-tutorials#-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%9B%B9%EC%95%B1-%EC%A0%9C%EC%9E%91-%EC%B4%9D%EB%A1%A0-learning-react-2e" chName='Source'/>
                     </div>
                     <div style={divStyle}>
